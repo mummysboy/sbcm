@@ -1,8 +1,11 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 export const alt = "Santa Barbara Chinese Medicine — Kristen Swegles, LAc, MTCM, CMP";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const runtime = "nodejs";
 
 const PLUM = "#964ba9";
 const GOLD = "#cea23b";
@@ -22,8 +25,17 @@ async function interBlack(): Promise<ArrayBuffer | null> {
   }
 }
 
+async function logoDataUri(): Promise<string | null> {
+  try {
+    const buf = await readFile(path.join(process.cwd(), "public", "logo.png"));
+    return `data:image/png;base64,${buf.toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
 export default async function OgImage() {
-  const font = await interBlack();
+  const [font, logo] = await Promise.all([interBlack(), logoDataUri()]);
 
   return new ImageResponse(
     (
@@ -48,44 +60,25 @@ export default async function OgImage() {
             borderRadius: 24,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 18,
-              color: GOLD,
-            }}
-          >
-            <div style={{ width: 70, height: 2, background: GOLD }} />
-            <div style={{ fontSize: 22 }}>✧</div>
-            <div style={{ width: 70, height: 2, background: GOLD }} />
-          </div>
+          {logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logo} alt="" width={520} height={143} />
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                fontSize: 60,
+                fontWeight: 900,
+                color: PLUM,
+                letterSpacing: 3,
+              }}
+            >
+              SANTA BARBARA CHINESE MEDICINE
+            </div>
+          )}
           <div
             style={{
               marginTop: 22,
-              fontSize: 60,
-              fontWeight: 900,
-              color: PLUM,
-              letterSpacing: 3,
-              textAlign: "center",
-            }}
-          >
-            SANTA BARBARA
-          </div>
-          <div
-            style={{
-              fontSize: 60,
-              fontWeight: 900,
-              color: PLUM,
-              letterSpacing: 3,
-              textAlign: "center",
-            }}
-          >
-            CHINESE MEDICINE
-          </div>
-          <div
-            style={{
-              marginTop: 10,
               fontSize: 26,
               color: GOLD,
               letterSpacing: 8,
@@ -101,7 +94,7 @@ export default async function OgImage() {
               letterSpacing: 2,
             }}
           >
-            924 Anacapa St, Santa Barbara · santabarbarachinesemedicine.com
+            924 Anacapa St, Santa Barbara · santa-barbara-chinese-medicine.vercel.app
           </div>
         </div>
       </div>

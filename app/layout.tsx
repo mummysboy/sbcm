@@ -13,18 +13,21 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-// TODO: metadataBase/openGraph URLs use a placeholder domain until a real
-// domain is purchased and confirmed.
+// TODO: metadataBase/openGraph URL points at the live Vercel deployment
+// until a real domain is purchased and confirmed — update both when that
+// happens.
+const SITE_URL = "https://santa-barbara-chinese-medicine.vercel.app";
+
 export const metadata: Metadata = {
   title: "Santa Barbara Chinese Medicine — Kristen Swegles, LAc, MTCM, CMP",
   description:
     "Activate and replenish your body's Qi for optimal health. Acupuncture, herbal medicine, cupping, and traditional Chinese medicine in Santa Barbara, CA. Complimentary consultations available.",
-  metadataBase: new URL("https://www.santabarbarachinesemedicine.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Santa Barbara Chinese Medicine",
     description:
       "Acupuncture, herbal medicine, and traditional Chinese medicine with Kristen Swegles, LAc, MTCM, CMP in Santa Barbara, CA.",
-    url: "https://www.santabarbarachinesemedicine.com",
+    url: SITE_URL,
     siteName: "Santa Barbara Chinese Medicine",
     type: "website",
   },
