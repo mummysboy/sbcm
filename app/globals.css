@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f5f0e6;
+  --cream-dark: #ebe3d3;
+  --ink: #1a1713;
+  --ink-soft: #3d372e;
+  --red: #8c2f2f;
+  --red-dark: #6e2424;
+  --gold: #a98d4b;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-dark: var(--cream-dark);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-brand-red: var(--red);
+  --color-brand-red-dark: var(--red-dark);
+  --color-gold: var(--gold);
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-inter), Georgia, serif;
+}
+
+/* Double-rule divider, an art-deco staple */
+.deco-rule {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  height: 5px;
+}
+
+.deco-frame {
+  border: 1px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
