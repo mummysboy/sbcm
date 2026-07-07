@@ -1,14 +1,12 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt = "Santa Barbara Chinese Medicine — Kristen Swegles, LAc, MTCM, CMP";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Satori can't do mix-blend-multiply, so the card is white to blend with the
-// logo JPEG's white background; the deco border keeps it on-brand.
-const NAVY = "#263248";
+const PLUM = "#964ba9";
+const GOLD = "#cea23b";
+const SAND = "#f7f5ef";
 
 async function interBlack(): Promise<ArrayBuffer | null> {
   try {
@@ -25,11 +23,7 @@ async function interBlack(): Promise<ArrayBuffer | null> {
 }
 
 export default async function OgImage() {
-  const [logo, font] = await Promise.all([
-    readFile(join(process.cwd(), "public/logo-mark.jpg")),
-    interBlack(),
-  ]);
-  const logoSrc = `data:image/jpeg;base64,${logo.toString("base64")}`;
+  const font = await interBlack();
 
   return new ImageResponse(
     (
@@ -38,7 +32,7 @@ export default async function OgImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "#ffffff",
+          background: SAND,
           padding: 28,
         }}
       >
@@ -50,30 +44,28 @@ export default async function OgImage() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            border: `3px solid ${NAVY}`,
+            border: `2px solid ${GOLD}`,
+            borderRadius: 24,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} width={210} height={167} alt="" />
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: 18,
-              marginTop: 8,
-              color: NAVY,
+              color: GOLD,
             }}
           >
-            <div style={{ width: 70, height: 2, background: NAVY }} />
-            <div style={{ fontSize: 22 }}>★</div>
-            <div style={{ width: 70, height: 2, background: NAVY }} />
+            <div style={{ width: 70, height: 2, background: GOLD }} />
+            <div style={{ fontSize: 22 }}>✧</div>
+            <div style={{ width: 70, height: 2, background: GOLD }} />
           </div>
           <div
             style={{
-              marginTop: 14,
+              marginTop: 22,
               fontSize: 60,
               fontWeight: 900,
-              color: NAVY,
+              color: PLUM,
               letterSpacing: 3,
               textAlign: "center",
             }}
@@ -84,7 +76,7 @@ export default async function OgImage() {
             style={{
               fontSize: 60,
               fontWeight: 900,
-              color: NAVY,
+              color: PLUM,
               letterSpacing: 3,
               textAlign: "center",
             }}
@@ -95,7 +87,7 @@ export default async function OgImage() {
             style={{
               marginTop: 10,
               fontSize: 26,
-              color: NAVY,
+              color: GOLD,
               letterSpacing: 8,
             }}
           >

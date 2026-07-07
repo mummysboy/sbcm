@@ -29,7 +29,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
           setOpen(true);
           if (serviceId) loadSlots(serviceId);
         }}
-        className="border border-ink px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] hover:bg-cream-dark"
+        className="border border-ink px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] hover:bg-sand-dark"
       >
         + Add booking (walk-in / phone)
       </button>
@@ -37,7 +37,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
   }
 
   return (
-    <div className="border border-ink bg-cream-dark/40 p-6">
+    <div className="border border-ink bg-sand-dark/40 p-6">
       <div className="flex items-baseline justify-between">
         <h2 className="font-display text-xl font-bold">Add booking</h2>
         <button
@@ -57,7 +57,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
               setServiceId(e.target.value);
               loadSlots(e.target.value);
             }}
-            className="mt-2 w-full border border-ink bg-cream px-3 py-2.5"
+            className="mt-2 w-full border border-ink bg-sand px-3 py-2.5"
           >
             {services.map((s) => (
               <option key={s.id} value={s.id}>
@@ -71,7 +71,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
           <select
             value={startsAt}
             onChange={(e) => setStartsAt(e.target.value)}
-            className="mt-2 w-full border border-ink bg-cream px-3 py-2.5"
+            className="mt-2 w-full border border-ink bg-sand px-3 py-2.5"
           >
             <option value="">{slots === null ? "Loading…" : "Pick a time"}</option>
             {(slots ?? []).map((s) => (
@@ -86,7 +86,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-2 w-full border border-ink bg-cream px-3 py-2.5"
+            className="mt-2 w-full border border-ink bg-sand px-3 py-2.5"
             placeholder="Client name"
           />
         </label>
@@ -98,13 +98,13 @@ export default function AddBooking({ services, date }: { services: Service[]; da
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             inputMode="tel"
-            className="mt-2 w-full border border-ink bg-cream px-3 py-2.5"
-            placeholder="(415) 555-0123"
+            className="mt-2 w-full border border-ink bg-sand px-3 py-2.5"
+            placeholder="(805) 555-0123"
           />
         </label>
       </div>
       {error && (
-        <p className="mt-4 border border-brand-red bg-brand-red/10 px-4 py-3 text-sm text-brand-red-dark">
+        <p className="mt-4 border border-brand-gold bg-brand-gold/10 px-4 py-3 text-sm text-brand-gold-dark">
           {error}
         </p>
       )}
@@ -124,7 +124,7 @@ export default function AddBooking({ services, date }: { services: Service[]; da
             }
           });
         }}
-        className="mt-6 bg-brand-red px-8 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-cream hover:bg-brand-red-dark disabled:opacity-40"
+        className="mt-6 bg-brand-gold px-8 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-sand hover:bg-brand-gold-dark disabled:opacity-40"
       >
         {isPending ? "Adding…" : "Add booking"}
       </button>

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { supabaseAdmin } from "@/lib/db";
 import type { BusinessHours, Service } from "@/lib/types";
+import TestimonialCarousel from "./TestimonialCarousel";
 
 export const revalidate = 300;
 
@@ -48,35 +48,20 @@ export default async function HomePage() {
   return (
     <main className="flex-1">
       {/* Hero */}
-      <section className="border-b border-ink bg-cream">
+      <section className="border-b border-ink bg-sand">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center sm:py-24">
-          {/* TODO: swap for Santa Barbara Chinese Medicine's real logo — this is
-              still the momothebarber template placeholder mark. */}
-          <Image
-            src="/logo-mark.jpg"
-            alt="Santa Barbara Chinese Medicine logo"
-            width={130}
-            height={103}
-            priority
-            className="mx-auto mix-blend-multiply"
+          <img
+            src="/logo.png"
+            alt="Santa Barbara Chinese Medicine"
+            className="mx-auto h-auto w-64 sm:w-80"
           />
-          <div
-            aria-hidden
-            className="mx-auto mt-4 flex w-40 items-center gap-3 text-[#263248]"
-          >
-            <span className="h-px flex-1 bg-[#263248]" />
-            <span className="text-xs leading-none">★</span>
-            <span className="h-px flex-1 bg-[#263248]" />
-          </div>
-          <h1 className="mt-5 font-sans text-4xl font-black uppercase tracking-[0.06em] text-[#263248] sm:text-6xl">
-            Santa Barbara Chinese Medicine
-          </h1>
-          <p className="mt-3 font-sans text-sm font-medium uppercase tracking-[0.5em] text-[#263248]/80 sm:text-base">
+          <h1 className="sr-only">Santa Barbara Chinese Medicine</h1>
+          <p className="mt-3 font-sans text-sm font-medium uppercase tracking-[0.5em] text-ink-soft sm:text-base">
             Kristen Swegles, LAc, MTCM, CMP
           </p>
-          <div className="deco-rule mx-auto mt-10 w-24" />
+          <div className="hairline mx-auto mt-10 w-24" />
           <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-ink-soft italic">
-            &ldquo;Activate and replenish your body&rsquo;s &lsquo;qi&rsquo; for
+            &ldquo;Activate and replenish your body&rsquo;s &lsquo;Qi&rsquo; for
             optimal health!&rdquo;
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
@@ -86,7 +71,7 @@ export default async function HomePage() {
           </p>
           <Link
             href="/book"
-            className="mt-10 inline-block bg-brand-red px-10 py-4 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-brand-red-dark"
+            className="mt-10 inline-block bg-brand-gold px-10 py-4 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-sand transition-colors hover:bg-brand-gold-dark"
           >
             Book an Appointment
           </Link>
@@ -96,20 +81,15 @@ export default async function HomePage() {
       {/* Services */}
       <section className="mx-auto max-w-3xl px-6 py-20">
         <h2 className="text-center font-display text-3xl font-bold sm:text-4xl">Services</h2>
-        <div className="deco-rule mx-auto mt-6 w-16" />
+        <div className="hairline mx-auto mt-6 w-16" />
         <p className="mx-auto mt-6 max-w-lg text-center text-sm text-ink-soft">
-          Complimentary consultations available.{" "}
-          {/* TODO: pricing hasn't been published anywhere — publish real rates
-              in /admin/services, then this note (and the "Inquire" labels
-              below) can be removed. */}
-          Pricing available by phone or in person — call to ask about a
-          specific service.
+          Complimentary consultations available.
         </p>
         <ul className="mt-12 space-y-8">
           {((services ?? []) as Service[]).map((s) => (
             <li key={s.id}>
               <div className="flex items-baseline gap-3">
-                <span className="font-display text-xl font-semibold">{s.name}</span>
+                <span className="font-display text-xl font-semibold text-plum">{s.name}</span>
                 <span
                   aria-hidden
                   className="flex-1 border-b border-dotted border-ink-soft/50"
@@ -128,12 +108,12 @@ export default async function HomePage() {
       </section>
 
       {/* Conditions treated */}
-      <section className="border-t border-ink bg-cream">
+      <section className="border-t border-ink bg-sand">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="text-center font-display text-3xl font-bold sm:text-4xl">
             Conditions We Treat
           </h2>
-          <div className="deco-rule mx-auto mt-6 w-16" />
+          <div className="hairline mx-auto mt-6 w-16" />
           <ul className="mx-auto mt-12 grid max-w-xl grid-cols-2 gap-x-8 gap-y-3 text-ink-soft sm:grid-cols-3">
             {CONDITIONS.map((c) => (
               <li key={c} className="text-center text-sm">
@@ -144,41 +124,75 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Meet Kristen */}
+      <section className="border-t border-ink">
+        <div className="mx-auto grid max-w-4xl items-center gap-10 px-6 py-20 sm:grid-cols-[220px_1fr]">
+          <img
+            src="/kristen-headshot.jpg"
+            alt="Kristen Swegles, LAc, MTCM, CMP"
+            className="soft-frame mx-auto aspect-[3/4] w-48 object-cover sm:w-full"
+          />
+          <div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl">
+              Meet Kristen
+            </h2>
+            <div className="hairline mt-6 w-16" />
+            <p className="mt-6 leading-relaxed text-ink-soft">
+              Kristen Swegles, LAc, MTCM, CMP brings a functional, integrative
+              approach to traditional Chinese medicine — combining
+              acupuncture, herbal medicine, and lifestyle therapies into
+              customized care for each patient.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery */}
-      {/* TODO: these are still the momothebarber template's placeholder
-          barbershop photos. Replace with real photos of Kristen, the office
-          at 924 Anacapa St, and the practice once supplied. */}
-      <section className="border-t border-ink bg-cream-dark">
+      <section className="border-t border-ink bg-sand-dark">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-center font-display text-3xl font-bold sm:text-4xl">Gallery</h2>
-          <div className="deco-rule mx-auto mt-6 w-16" />
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="deco-frame overflow-hidden">
-                <Image
-                  src={`/gallery/cut-${n}.jpg`}
-                  alt="Santa Barbara Chinese Medicine — placeholder photo, TODO replace"
-                  width={585}
-                  height={780}
-                  className="aspect-[3/4] w-full object-cover"
-                  sizes="(max-width: 640px) 50vw, 33vw"
-                />
-              </div>
+          <div className="hairline mx-auto mt-6 w-16" />
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[
+              { src: "/gallery-waiting-area.jpg", alt: "Waiting area at Santa Barbara Chinese Medicine" },
+              { src: "/gallery-hallway.jpg", alt: "Office hallway with a traditional longevity symbol" },
+              { src: "/gallery-treatment-room.jpg", alt: "Treatment room at Santa Barbara Chinese Medicine" },
+            ].map((photo) => (
+              <img
+                key={photo.src}
+                src={photo.src}
+                alt={photo.alt}
+                className="soft-frame aspect-[3/4] w-full object-cover"
+              />
             ))}
           </div>
-          <p className="mt-8 text-center text-sm italic text-ink-soft">
-            Photos coming soon.
-          </p>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-t border-ink">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+          <h2 className="font-display text-3xl font-bold sm:text-4xl">What Patients Say</h2>
+          <div className="hairline mx-auto mt-6 w-16" />
+          <a
+            href="https://www.yelp.com/biz/kristen-swegles-lac-mtcm-cmp-santa-barbara"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-block font-sans text-xs uppercase tracking-[0.2em] text-brand-gold underline"
+          >
+            5.0 ★ · 20 reviews on Yelp
+          </a>
+          <TestimonialCarousel />
         </div>
       </section>
 
       {/* Insurance & consultations */}
-      <section className="border-t border-ink">
+      <section className="border-t border-ink bg-sand">
         <div className="mx-auto max-w-3xl px-6 py-20 text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
             Insurance &amp; Consultations
           </h2>
-          <div className="deco-rule mx-auto mt-6 w-16" />
+          <div className="hairline mx-auto mt-6 w-16" />
           <p className="mx-auto mt-8 max-w-xl leading-relaxed text-ink-soft">
             New patients are welcome to a complimentary consultation to discuss
             your health goals before booking a full appointment.
@@ -190,11 +204,11 @@ export default async function HomePage() {
       </section>
 
       {/* Visit */}
-      <section className="border-t border-ink bg-cream-dark">
+      <section className="border-t border-ink bg-sand-dark">
         <div className="mx-auto grid max-w-4xl gap-12 px-6 py-20 sm:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl font-bold">Visit the Office</h2>
-            <div className="deco-rule mt-6 w-16" />
+            <div className="hairline mt-6 w-16" />
             <p className="mt-8 leading-relaxed text-ink-soft">
               924 Anacapa St, Suite 3D
               <br />
@@ -202,27 +216,27 @@ export default async function HomePage() {
             </p>
             <p className="mt-4 leading-relaxed text-ink-soft">
               Call or text:{" "}
-              <a className="underline decoration-brand-red" href="tel:+18313597779">
+              <a className="underline decoration-brand-gold" href="tel:+18313597779">
                 (831) 359-7779
               </a>
             </p>
             <p className="mt-1 leading-relaxed text-ink-soft">
               Office:{" "}
-              <a className="underline decoration-brand-red" href="tel:+18057295270">
+              <a className="underline decoration-brand-gold" href="tel:+18057295270">
                 (805) 729-5270
               </a>
             </p>
             <p className="mt-1 leading-relaxed text-ink-soft">
               Email:{" "}
               <a
-                className="underline decoration-brand-red"
+                className="underline decoration-brand-gold"
                 href="mailto:kristenswegles@gmail.com"
               >
                 kristenswegles@gmail.com
               </a>
             </p>
             <a
-              className="mt-4 inline-block font-sans text-xs uppercase tracking-[0.2em] text-brand-red underline"
+              className="mt-4 inline-block font-sans text-xs uppercase tracking-[0.2em] text-brand-gold underline"
               href="https://maps.google.com/?q=924+Anacapa+St+Suite+3D,+Santa+Barbara,+CA+93101"
               target="_blank"
               rel="noreferrer"
@@ -232,7 +246,7 @@ export default async function HomePage() {
           </div>
           <div>
             <h2 className="font-display text-3xl font-bold">Hours</h2>
-            <div className="deco-rule mt-6 w-16" />
+            <div className="hairline mt-6 w-16" />
             {hasPublishedHours ? (
               <ul className="mt-8 space-y-2 text-ink-soft">
                 {((hours ?? []) as BusinessHours[]).map((h) => (
@@ -252,7 +266,7 @@ export default async function HomePage() {
               // dynamic weekly list above automatically.
               <p className="mt-8 leading-relaxed text-ink-soft">
                 By appointment — hours coming soon. Please call{" "}
-                <a className="underline decoration-brand-red" href="tel:+18313597779">
+                <a className="underline decoration-brand-gold" href="tel:+18313597779">
                   (831) 359-7779
                 </a>{" "}
                 to schedule.
@@ -266,7 +280,7 @@ export default async function HomePage() {
         <p>
           Santa Barbara Chinese Medicine · 924 Anacapa St Suite 3D, Santa
           Barbara, CA 93101 ·{" "}
-          <Link href="/book" className="text-brand-red underline">
+          <Link href="/book" className="text-brand-gold underline">
             Book online
           </Link>
         </p>
@@ -275,7 +289,7 @@ export default async function HomePage() {
             href="https://www.instagram.com/kristenswegles/"
             target="_blank"
             rel="noreferrer"
-            className="text-brand-red underline"
+            className="text-brand-gold underline"
           >
             Instagram
           </a>
@@ -283,7 +297,7 @@ export default async function HomePage() {
             href="https://www.facebook.com/kristenswegleslac"
             target="_blank"
             rel="noreferrer"
-            className="text-brand-red underline"
+            className="text-brand-gold underline"
           >
             Facebook
           </a>
@@ -291,7 +305,7 @@ export default async function HomePage() {
             href="https://www.yelp.com/biz/kristen-swegles-lac-mtcm-cmp-santa-barbara"
             target="_blank"
             rel="noreferrer"
-            className="text-brand-red underline"
+            className="text-brand-gold underline"
           >
             Yelp
           </a>

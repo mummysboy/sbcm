@@ -31,7 +31,7 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
   if (mode === "cancelled" || booking.status !== "confirmed") {
     const past = booking.status === "completed" || booking.status === "no_show";
     return (
-      <div className="deco-frame px-8 py-12 text-center">
+      <div className="soft-frame px-8 py-12 text-center">
         <h1 className="font-display text-2xl font-bold">
           {past ? "This appointment has passed" : "Appointment cancelled"}
         </h1>
@@ -40,7 +40,7 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
         </p>
         <Link
           href="/book"
-          className="mt-8 inline-block bg-brand-red px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-cream hover:bg-brand-red-dark"
+          className="mt-8 inline-block bg-brand-gold px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-sand hover:bg-brand-gold-dark"
         >
           Book a new appointment
         </Link>
@@ -82,9 +82,9 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
   }
 
   return (
-    <div className="deco-frame px-8 py-12 text-center">
+    <div className="soft-frame px-8 py-12 text-center">
       {justMoved && (
-        <p className="mb-6 font-sans text-xs uppercase tracking-[0.3em] text-brand-red">
+        <p className="mb-6 font-sans text-xs uppercase tracking-[0.3em] text-brand-gold">
           Appointment moved — new confirmation text sent
         </p>
       )}
@@ -94,7 +94,7 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
         924 Anacapa St, Suite 3D, Santa Barbara, CA 93101
       </p>
       {error && (
-        <p className="mx-auto mt-6 max-w-md border border-brand-red bg-brand-red/10 px-4 py-3 text-sm text-brand-red-dark">
+        <p className="mx-auto mt-6 max-w-md border border-brand-gold bg-brand-gold/10 px-4 py-3 text-sm text-brand-gold-dark">
           {error}
         </p>
       )}
@@ -102,7 +102,7 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
         <button
           type="button"
           onClick={() => setMode("reschedule")}
-          className="border border-ink px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-cream-dark"
+          className="border border-ink px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-sand-dark"
         >
           Reschedule
         </button>
@@ -121,10 +121,10 @@ export default function ManageBooking({ booking, token, dates, justMoved }: Prop
               else setError(result.error ?? "Could not cancel.");
             });
           }}
-          className={`border border-brand-red px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] transition-colors disabled:opacity-40 ${
+          className={`border border-brand-gold px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] transition-colors disabled:opacity-40 ${
             confirmingCancel
-              ? "bg-brand-red text-cream hover:bg-brand-red-dark"
-              : "text-brand-red hover:bg-brand-red hover:text-cream"
+              ? "bg-brand-gold text-sand hover:bg-brand-gold-dark"
+              : "text-brand-gold hover:bg-brand-gold hover:text-sand"
           }`}
         >
           {isPending

@@ -15,14 +15,14 @@ export default function ServiceEditor({ service }: { service: Service }) {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <div className={`border border-ink bg-cream p-5 ${active ? "" : "opacity-60"}`}>
+    <div className={`border border-ink bg-sand p-5 ${active ? "" : "opacity-60"}`}>
       <div className="grid gap-4 sm:grid-cols-[2fr_1fr_1fr]">
         <label className="block">
           <span className="font-sans text-xs uppercase tracking-[0.2em] text-ink-soft">Name</span>
           <input
             value={name}
             onChange={(e) => (setSaved(false), setName(e.target.value))}
-            className="mt-1 w-full border border-ink bg-cream px-3 py-2"
+            className="mt-1 w-full border border-ink bg-sand px-3 py-2"
           />
         </label>
         <label className="block">
@@ -33,7 +33,7 @@ export default function ServiceEditor({ service }: { service: Service }) {
             value={price}
             onChange={(e) => (setSaved(false), setPrice(e.target.value))}
             inputMode="decimal"
-            className="mt-1 w-full border border-ink bg-cream px-3 py-2"
+            className="mt-1 w-full border border-ink bg-sand px-3 py-2"
           />
         </label>
         <label className="block">
@@ -44,7 +44,7 @@ export default function ServiceEditor({ service }: { service: Service }) {
             value={duration}
             onChange={(e) => (setSaved(false), setDuration(e.target.value))}
             inputMode="numeric"
-            className="mt-1 w-full border border-ink bg-cream px-3 py-2"
+            className="mt-1 w-full border border-ink bg-sand px-3 py-2"
           />
         </label>
       </div>
@@ -55,7 +55,7 @@ export default function ServiceEditor({ service }: { service: Service }) {
         <input
           value={description}
           onChange={(e) => (setSaved(false), setDescription(e.target.value))}
-          className="mt-1 w-full border border-ink bg-cream px-3 py-2"
+          className="mt-1 w-full border border-ink bg-sand px-3 py-2"
         />
       </label>
       <div className="mt-4 flex flex-wrap items-center gap-4">
@@ -64,7 +64,7 @@ export default function ServiceEditor({ service }: { service: Service }) {
             type="checkbox"
             checked={active}
             onChange={(e) => (setSaved(false), setActive(e.target.checked))}
-            className="size-4 accent-brand-red"
+            className="size-4 accent-brand-gold"
           />
           Bookable
         </label>
@@ -92,12 +92,12 @@ export default function ServiceEditor({ service }: { service: Service }) {
               else setError(result.error);
             });
           }}
-          className="bg-brand-red px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-cream hover:bg-brand-red-dark disabled:opacity-40"
+          className="bg-brand-gold px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-sand hover:bg-brand-gold-dark disabled:opacity-40"
         >
           {isPending ? "Saving…" : "Save"}
         </button>
         {saved && <span className="font-sans text-sm text-ink-soft">Saved.</span>}
-        {error && <span className="font-sans text-sm text-brand-red-dark">{error}</span>}
+        {error && <span className="font-sans text-sm text-brand-gold-dark">{error}</span>}
       </div>
     </div>
   );

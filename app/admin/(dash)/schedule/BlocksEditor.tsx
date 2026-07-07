@@ -21,7 +21,7 @@ export default function BlocksEditor({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <div className="border border-ink bg-cream">
+    <div className="border border-ink bg-sand">
       {blocks.length === 0 ? (
         <p className="border-b border-ink-soft/20 px-5 py-4 text-sm italic text-ink-soft">
           Nothing blocked.
@@ -40,7 +40,7 @@ export default function BlocksEditor({
               type="button"
               disabled={isPending}
               onClick={() => startTransition(() => adminRemoveBlock(b.id))}
-              className="font-sans text-xs uppercase tracking-[0.15em] text-brand-red underline disabled:opacity-40"
+              className="font-sans text-xs uppercase tracking-[0.15em] text-brand-gold underline disabled:opacity-40"
             >
               Remove
             </button>
@@ -54,7 +54,7 @@ export default function BlocksEditor({
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="mt-1 block border border-ink bg-cream px-2 py-1.5 font-sans text-sm"
+            className="mt-1 block border border-ink bg-sand px-2 py-1.5 font-sans text-sm"
           />
         </label>
         <label className="block">
@@ -63,7 +63,7 @@ export default function BlocksEditor({
             type="time"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="mt-1 block border border-ink bg-cream px-2 py-1.5 font-sans text-sm"
+            className="mt-1 block border border-ink bg-sand px-2 py-1.5 font-sans text-sm"
           />
         </label>
         <label className="block">
@@ -72,7 +72,7 @@ export default function BlocksEditor({
             type="time"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="mt-1 block border border-ink bg-cream px-2 py-1.5 font-sans text-sm"
+            className="mt-1 block border border-ink bg-sand px-2 py-1.5 font-sans text-sm"
           />
         </label>
         <label className="block flex-1 basis-40">
@@ -83,7 +83,7 @@ export default function BlocksEditor({
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             placeholder="Lunch, day off…"
-            className="mt-1 block w-full border border-ink bg-cream px-2 py-1.5 font-sans text-sm"
+            className="mt-1 block w-full border border-ink bg-sand px-2 py-1.5 font-sans text-sm"
           />
         </label>
         <button
@@ -105,11 +105,11 @@ export default function BlocksEditor({
               }
             });
           }}
-          className="bg-ink px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-cream hover:bg-ink-soft disabled:opacity-40"
+          className="bg-ink px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-sand hover:bg-ink-soft disabled:opacity-40"
         >
           {isPending ? "Blocking…" : "Block time"}
         </button>
-        {error && <span className="basis-full font-sans text-sm text-brand-red-dark">{error}</span>}
+        {error && <span className="basis-full font-sans text-sm text-brand-gold-dark">{error}</span>}
       </div>
     </div>
   );

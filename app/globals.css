@@ -1,42 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f5f0e6;
-  --cream-dark: #ebe3d3;
-  --ink: #1a1713;
-  --ink-soft: #3d372e;
-  --red: #8c2f2f;
-  --red-dark: #6e2424;
-  --gold: #a98d4b;
+  --sand: #f7f5ef;
+  --sand-dark: #ece7d8;
+  --ink: #2e2b26;
+  --ink-soft: #6b6863;
+  --gold: #cea23b;
+  --gold-dark: #a8822c;
+  --plum: #964ba9;
 }
 
 @theme inline {
-  --color-cream: var(--cream);
-  --color-cream-dark: var(--cream-dark);
+  --color-sand: var(--sand);
+  --color-sand-dark: var(--sand-dark);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-brand-red: var(--red);
-  --color-brand-red-dark: var(--red-dark);
-  --color-gold: var(--gold);
+  --color-brand-gold: var(--gold);
+  --color-brand-gold-dark: var(--gold-dark);
+  --color-plum: var(--plum);
   --font-display: var(--font-playfair);
   --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--cream);
+  background: var(--sand);
   color: var(--ink);
   font-family: var(--font-inter), Georgia, serif;
 }
 
-/* Double-rule divider, an art-deco staple */
-.deco-rule {
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  height: 5px;
+@layer base {
+  h1, h2, h3 {
+    color: var(--plum);
+  }
 }
 
-.deco-frame {
-  border: 1px solid var(--ink);
-  outline: 1px solid var(--ink);
-  outline-offset: 4px;
+/* Single soft hairline divider */
+.hairline {
+  border-top: 1px solid var(--sand-dark);
+  height: 1px;
+}
+
+.soft-frame {
+  border: 1px solid var(--sand-dark);
+  border-radius: 0.75rem;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.6s ease both;
 }

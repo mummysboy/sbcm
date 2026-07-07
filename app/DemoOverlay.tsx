@@ -29,27 +29,27 @@ export default function DemoOverlay() {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 px-6"
     >
       <div className="max-w-md text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-red">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold">
           Please note
         </p>
-        <h2 className="mt-4 font-display text-3xl font-bold text-cream">
+        <h2 className="mt-4 font-display text-3xl font-bold text-sand">
           This site is just a demo
         </h2>
-        <p className="mt-4 text-cream/80">
+        <p className="mt-4 text-sand/80">
           If you&rsquo;d like to book an appointment with Kristen Swegles at
           Santa Barbara Chinese Medicine, please call to schedule.
         </p>
         <div className="mt-8 flex flex-col gap-3">
           <a
             href={CALL_TO_BOOK_URL}
-            className="bg-brand-red px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-brand-red-dark"
+            className="bg-brand-gold px-8 py-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-sand transition-colors hover:bg-brand-gold-dark"
           >
             Call to Book · (831) 359-7779
           </a>
           <button
             type="button"
             onClick={dismiss}
-            className="border border-cream/40 px-8 py-3 font-sans text-sm uppercase tracking-[0.2em] text-cream/80 transition-colors hover:border-cream hover:text-cream"
+            className="border border-sand/40 px-8 py-3 font-sans text-sm uppercase tracking-[0.2em] text-sand/80 transition-colors hover:border-sand hover:text-sand"
           >
             Continue to the demo
           </button>

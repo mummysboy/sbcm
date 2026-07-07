@@ -88,29 +88,34 @@ alter table public.sms_outbox enable row level security;
 -- 0) and duration_min holds a placeholder value only, satisfying the > 0
 -- check constraint — it is not shown until a real price is set. Update both
 -- via /admin/services before launch.
+-- Prices are estimated market rate + 10%, rounded up to the nearest $5 for
+-- cleaner display, based on comparable Santa Barbara practices (e.g. Santa
+-- Barbara Herb Clinic) and national averages per service — a placeholder
+-- until Kristen sets her real rates via /admin/services. See CLAUDE.md
+-- "Known data gaps".
 insert into public.services (name, description, price_cents, duration_min, sort_order) values
-  ('Acupuncture', 'Traditional needling therapy to activate and balance the body''s qi.', 0, 60, 1),
-  ('Herbal Prescriptions', 'Custom tinctures, teas, and pills tailored to your condition.', 0, 30, 2),
-  ('Cupping', 'Suction therapy to relieve muscle tension and improve circulation.', 0, 30, 3),
-  ('Moxibustion', 'Warming herbal therapy to strengthen circulation and immunity.', 0, 30, 4),
-  ('Gua Sha', 'Scraping massage technique to relieve tension and promote healing.', 0, 30, 5),
-  ('Tui Na', 'Traditional Chinese therapeutic massage and bodywork.', 0, 45, 6),
-  ('Reiki', 'Gentle energy healing to promote relaxation and balance.', 0, 45, 7),
-  ('Floral Acupuncture', 'Acupuncture combined with flower essence therapy.', 0, 60, 8),
-  ('Flower Essences', 'Plant-based remedies supporting emotional and energetic balance.', 0, 30, 9),
-  ('Cosmetic Acupuncture', 'Facial acupuncture to support natural skin rejuvenation.', 0, 60, 10);
+  ('Acupuncture', 'Traditional needling therapy to activate and balance the body''s Qi.', 13500, 60, 1),
+  ('Herbal Prescriptions', 'Custom tinctures, teas, and pills tailored to your condition.', 10500, 30, 2),
+  ('Cupping', 'Suction therapy to relieve muscle tension and improve circulation.', 5500, 30, 3),
+  ('Moxibustion', 'Warming herbal therapy to strengthen circulation and immunity.', 5000, 30, 4),
+  ('Gua Sha', 'Scraping massage technique to relieve tension and promote healing.', 6000, 30, 5),
+  ('Tui Na', 'Traditional Chinese therapeutic massage and bodywork.', 8500, 45, 6),
+  ('Reiki', 'Gentle energy healing to promote relaxation and balance.', 9000, 45, 7),
+  ('Floral Acupuncture', 'Acupuncture combined with flower essence therapy.', 14500, 60, 8),
+  ('Flower Essences', 'Plant-based remedies supporting emotional and energetic balance.', 7000, 30, 9),
+  ('Cosmetic Acupuncture', 'Facial acupuncture to support natural skin rejuvenation.', 16500, 60, 10);
 
 -- Seed: hours. TODO — hours aren't published anywhere (site, Yelp checked).
--- All days seeded closed; the homepage shows a "call to schedule" note
--- instead of an all-closed week until real hours are set in
--- /admin/schedule.
+-- Seeded as a normal Mon-Fri 10-6 wellness-practice schedule, closed
+-- weekends — Isaac's placeholder per the business owner's instruction, not
+-- Kristen's actual hours. Confirm/adjust via /admin/schedule before launch.
 insert into public.business_hours (weekday, is_open, open_time, close_time) values
-  (0, false, '10:30', '17:00'),
-  (1, false, '10:30', '17:00'),
-  (2, false, '10:30', '17:00'),
-  (3, false, '10:30', '17:00'),
-  (4, false, '10:30', '17:00'),
-  (5, false, '10:30', '17:00'),
-  (6, false, '10:30', '17:00');
+  (0, false, '10:00', '18:00'),
+  (1, true,  '10:00', '18:00'),
+  (2, true,  '10:00', '18:00'),
+  (3, true,  '10:00', '18:00'),
+  (4, true,  '10:00', '18:00'),
+  (5, true,  '10:00', '18:00'),
+  (6, false, '10:00', '18:00');
 
 insert into public.settings default values;

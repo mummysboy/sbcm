@@ -61,8 +61,8 @@ export default async function AdminAgendaPage({
             href={`/admin?date=${d.date}`}
             className={`shrink-0 border px-4 py-2 font-sans text-sm ${
               d.date === date
-                ? "border-brand-red bg-brand-red text-cream"
-                : "border-ink bg-cream hover:bg-cream-dark"
+                ? "border-brand-gold bg-brand-gold text-sand"
+                : "border-ink bg-sand hover:bg-sand-dark"
             }`}
           >
             {d.date === today ? "Today" : d.label}
@@ -71,13 +71,13 @@ export default async function AdminAgendaPage({
         <input
           type="date"
           defaultValue={date}
-          className="shrink-0 border border-ink bg-cream px-3 py-2 font-sans text-sm"
+          className="shrink-0 border border-ink bg-sand px-3 py-2 font-sans text-sm"
           // Progressive enhancement: jump straight to a typed date.
           name="date"
           form="date-jump"
         />
         <form id="date-jump" action="/admin" className="shrink-0">
-          <button type="submit" className="border border-ink px-3 py-2 font-sans text-sm hover:bg-cream-dark">
+          <button type="submit" className="border border-ink px-3 py-2 font-sans text-sm hover:bg-sand-dark">
             Go
           </button>
         </form>
@@ -94,8 +94,8 @@ export default async function AdminAgendaPage({
             key={b.id}
             className={`flex flex-wrap items-center gap-4 border px-5 py-4 ${
               b.status === "confirmed"
-                ? "border-ink bg-cream"
-                : "border-ink-soft/30 bg-cream-dark/50 opacity-60"
+                ? "border-ink bg-sand"
+                : "border-ink-soft/30 bg-sand-dark/50 opacity-60"
             }`}
           >
             <div className="w-24 font-display text-lg font-bold">
@@ -118,7 +118,7 @@ export default async function AdminAgendaPage({
               {b.status === "confirmed" && b.customer_phone && (
                 <p
                   className={`mt-1 font-sans text-xs uppercase tracking-[0.15em] ${
-                    b.customer_confirmed_at ? "text-ink" : "text-brand-red"
+                    b.customer_confirmed_at ? "text-ink" : "text-brand-gold"
                   }`}
                 >
                   {b.customer_confirmed_at ? "✓ Confirmed by text" : "Awaiting “Y” reply"}

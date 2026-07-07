@@ -18,7 +18,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Santa Barbara Chinese Medicine — Kristen Swegles, LAc, MTCM, CMP",
   description:
-    "Activate and replenish your body's qi for optimal health. Acupuncture, herbal medicine, cupping, and traditional Chinese medicine in Santa Barbara, CA. Complimentary consultations available.",
+    "Activate and replenish your body's Qi for optimal health. Acupuncture, herbal medicine, cupping, and traditional Chinese medicine in Santa Barbara, CA. Complimentary consultations available.",
   metadataBase: new URL("https://www.santabarbarachinesemedicine.com"),
   openGraph: {
     title: "Santa Barbara Chinese Medicine",

@@ -16,7 +16,7 @@ export default function AgendaActions({ bookingId }: { bookingId: string }) {
         type="button"
         disabled={isPending}
         onClick={() => startTransition(() => adminSetBookingStatus(bookingId, "completed"))}
-        className={`${buttonClass} border-ink hover:bg-ink hover:text-cream`}
+        className={`${buttonClass} border-ink hover:bg-ink hover:text-sand`}
       >
         Done
       </button>
@@ -24,7 +24,7 @@ export default function AgendaActions({ bookingId }: { bookingId: string }) {
         type="button"
         disabled={isPending}
         onClick={() => startTransition(() => adminSetBookingStatus(bookingId, "no_show"))}
-        className={`${buttonClass} border-ink-soft/50 text-ink-soft hover:bg-ink-soft hover:text-cream`}
+        className={`${buttonClass} border-ink-soft/50 text-ink-soft hover:bg-ink-soft hover:text-sand`}
       >
         No-show
       </button>
@@ -40,8 +40,8 @@ export default function AgendaActions({ bookingId }: { bookingId: string }) {
         }}
         className={`${buttonClass} ${
           confirmingCancel
-            ? "border-brand-red bg-brand-red text-cream hover:bg-brand-red-dark"
-            : "border-brand-red text-brand-red hover:bg-brand-red hover:text-cream"
+            ? "border-brand-gold bg-brand-gold text-sand hover:bg-brand-gold-dark"
+            : "border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-sand"
         }`}
       >
         {confirmingCancel ? "Confirm — texts client" : "Cancel"}

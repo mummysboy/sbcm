@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { formatInTimeZone } from "date-fns-tz";
 import { getBookingByToken } from "@/lib/booking";
@@ -30,13 +29,6 @@ export default async function ManagePage({
       <header className="border-b border-ink">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo-mark.jpg"
-              alt=""
-              width={44}
-              height={35}
-              className="mix-blend-multiply"
-            />
             <span className="font-display text-xl font-bold">Santa Barbara Chinese Medicine</span>
           </Link>
           <span className="text-right font-sans text-xs uppercase tracking-[0.25em] text-ink-soft">
@@ -46,14 +38,14 @@ export default async function ManagePage({
       </header>
       <div className="mx-auto max-w-3xl px-6 py-10">
         {!booking ? (
-          <div className="deco-frame px-8 py-12 text-center">
+          <div className="soft-frame px-8 py-12 text-center">
             <h1 className="font-display text-2xl font-bold">Booking not found</h1>
             <p className="mt-4 text-ink-soft">
               That link doesn&rsquo;t match an appointment.{" "}
-              <Link href="/book" className="text-brand-red underline">
+              <Link href="/book" className="text-brand-gold underline">
                 Book a new one
               </Link>{" "}
-              or call (415) 361-0025.
+              or call (831) 359-7779.
             </p>
           </div>
         ) : (

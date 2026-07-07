@@ -22,7 +22,7 @@ export default function HoursEditor({ initial }: { initial: BusinessHours[] }) {
   };
 
   return (
-    <div className="border border-ink bg-cream">
+    <div className="border border-ink bg-sand">
       {hours.map((h) => (
         <div
           key={h.weekday}
@@ -33,7 +33,7 @@ export default function HoursEditor({ initial }: { initial: BusinessHours[] }) {
               type="checkbox"
               checked={h.is_open}
               onChange={(e) => update(h.weekday, { is_open: e.target.checked })}
-              className="size-4 accent-brand-red"
+              className="size-4 accent-brand-gold"
             />
             <span className="font-semibold">{WEEKDAYS[h.weekday]}</span>
           </label>
@@ -43,14 +43,14 @@ export default function HoursEditor({ initial }: { initial: BusinessHours[] }) {
                 type="time"
                 value={h.open_time}
                 onChange={(e) => update(h.weekday, { open_time: e.target.value })}
-                className="border border-ink bg-cream px-2 py-1.5"
+                className="border border-ink bg-sand px-2 py-1.5"
               />
               <span>to</span>
               <input
                 type="time"
                 value={h.close_time}
                 onChange={(e) => update(h.weekday, { close_time: e.target.value })}
-                className="border border-ink bg-cream px-2 py-1.5"
+                className="border border-ink bg-sand px-2 py-1.5"
               />
             </div>
           ) : (
@@ -70,12 +70,12 @@ export default function HoursEditor({ initial }: { initial: BusinessHours[] }) {
               else setError(result.error);
             });
           }}
-          className="bg-brand-red px-8 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-cream hover:bg-brand-red-dark disabled:opacity-40"
+          className="bg-brand-gold px-8 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-sand hover:bg-brand-gold-dark disabled:opacity-40"
         >
           {isPending ? "Saving…" : "Save hours"}
         </button>
         {saved && <span className="font-sans text-sm text-ink-soft">Saved.</span>}
-        {error && <span className="font-sans text-sm text-brand-red-dark">{error}</span>}
+        {error && <span className="font-sans text-sm text-brand-gold-dark">{error}</span>}
       </div>
     </div>
   );

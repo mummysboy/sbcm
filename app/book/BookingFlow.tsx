@@ -30,7 +30,7 @@ type Props = {
 function StepHeading({ step, children }: { step: number; children: React.ReactNode }) {
   return (
     <h2 className="font-display text-2xl font-bold">
-      <span className="mr-3 text-brand-red">{step}.</span>
+      <span className="mr-3 text-brand-gold">{step}.</span>
       {children}
     </h2>
   );
@@ -94,8 +94,8 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
   if (confirmed) {
     const dateLabel = dates.find((d) => d.date === date)?.label;
     return (
-      <div className="deco-frame bg-cream px-8 py-12 text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-red">
+      <div className="soft-frame bg-sand px-8 py-12 text-center">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold">
           Appointment confirmed
         </p>
         <h2 className="mt-4 font-display text-3xl font-bold">See you soon, {name.split(" ")[0]}.</h2>
@@ -127,8 +127,8 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                 onClick={() => setService(s)}
                 className={`border px-5 py-4 text-left transition-colors ${
                   service?.id === s.id
-                    ? "border-brand-red bg-brand-red text-cream"
-                    : "border-ink bg-cream hover:bg-cream-dark"
+                    ? "border-brand-gold bg-brand-gold text-sand"
+                    : "border-ink bg-sand hover:bg-sand-dark"
                 }`}
               >
                 <span className="flex items-baseline justify-between font-display text-lg font-semibold">
@@ -137,7 +137,7 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                 </span>
                 <span
                   className={`mt-1 block text-sm ${
-                    service?.id === s.id ? "text-cream/80" : "text-ink-soft"
+                    service?.id === s.id ? "text-sand/80" : "text-ink-soft"
                   }`}
                 >
                   {s.duration_min} minutes
@@ -160,8 +160,8 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                 onClick={() => setDate(d.date)}
                 className={`shrink-0 border px-4 py-2 font-sans text-sm transition-colors ${
                   date === d.date
-                    ? "border-brand-red bg-brand-red text-cream"
-                    : "border-ink bg-cream hover:bg-cream-dark"
+                    ? "border-brand-gold bg-brand-gold text-sand"
+                    : "border-ink bg-sand hover:bg-sand-dark"
                 }`}
               >
                 {d.label}
@@ -193,8 +193,8 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                           onClick={() => setSlot(s)}
                           className={`border py-2.5 text-center font-sans text-sm tabular-nums transition-colors ${
                             slot?.startsAt === s.startsAt
-                              ? "border-brand-red bg-brand-red font-semibold text-cream"
-                              : "border-ink bg-cream hover:bg-cream-dark"
+                              ? "border-brand-gold bg-brand-gold font-semibold text-sand"
+                              : "border-ink bg-sand hover:bg-sand-dark"
                           }`}
                         >
                           {s.label.replace(/ [AP]M$/, "")}
@@ -224,7 +224,7 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     autoComplete="name"
-                    className="mt-2 w-full border border-ink bg-cream px-4 py-3 outline-none focus:border-brand-red"
+                    className="mt-2 w-full border border-ink bg-sand px-4 py-3 outline-none focus:border-brand-gold"
                     placeholder="Your name"
                   />
                 </label>
@@ -237,8 +237,8 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
                     onChange={(e) => setPhone(e.target.value)}
                     autoComplete="tel"
                     inputMode="tel"
-                    className="mt-2 w-full border border-ink bg-cream px-4 py-3 outline-none focus:border-brand-red"
-                    placeholder="(415) 555-0123"
+                    className="mt-2 w-full border border-ink bg-sand px-4 py-3 outline-none focus:border-brand-gold"
+                    placeholder="(805) 555-0123"
                   />
                 </label>
               </div>
@@ -252,7 +252,7 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
             </>
           )}
           {error && (
-            <p className="mt-4 border border-brand-red bg-brand-red/10 px-4 py-3 text-sm text-brand-red-dark">
+            <p className="mt-4 border border-brand-gold bg-brand-gold/10 px-4 py-3 text-sm text-brand-gold-dark">
               {error}
             </p>
           )}
@@ -260,7 +260,7 @@ export default function BookingFlow({ services, dates, rescheduleService, onPick
             type="button"
             onClick={confirm}
             disabled={isPending || (!isReschedule && (name.trim().length < 2 || phone.trim().length < 10))}
-            className="mt-6 w-full bg-brand-red px-10 py-4 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-brand-red-dark disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+            className="mt-6 w-full bg-brand-gold px-10 py-4 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-sand transition-colors hover:bg-brand-gold-dark disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
           >
             {isPending
               ? "Booking…"
